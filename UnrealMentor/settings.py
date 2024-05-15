@@ -23,14 +23,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-t#ap#2tcd=cd5j#&_u3ioc*n9v=v%*#gpkdd3xkkhuo3!(g^eh'
 
+REQUEST_COOKIE = {
+        "Cookie": "_ga=GA1.1.1668753489.1709641705; _gid=GA1.1.1023487727.1713970481; _gat=1; csrftoken=JGZOxKsiBSwycWeW2XkpdZSOjKELU3QdaQSjgDszpZ8Gv9rWjld78r9zoF2U1XBl; sessionid=jnyifqkyazadansmtuykbj939z7xbwxs; _ga_59QEB25NR7=GS1.1.1713970481.2.1.1713970519.0.0.0",
+        'X-Csrftoken': 'JGZOxKsiBSwycWeW2XkpdZSOjKELU3QdaQSjgDszpZ8Gv9rWjld78r9zoF2U1XBl'
+    }
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = [
     "150.158.146.160",
     'localhost'
 ]
 
+JUDGEMENT_URLS = 'http://124.222.95.233/'
+# JUDGEMENT SERVICES ADDRESS HERE
 
 # Application definition
 
@@ -42,7 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat',
     'user',
+    'oj',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [

@@ -43,10 +43,12 @@ def register(request):
 @csrf_exempt
 def get_status(request):
     user = request.user
+    print(user)
     if not user.is_authenticated:
+        print("111",user.username)
         return JsonResponse({'code':0})
     else :
-        return JsonResponse({'code':1})
+        return JsonResponse({'code':1, 'username':user.username})
 @csrf_exempt
 def user_login(request):
     print(request)
