@@ -33,7 +33,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "150.158.146.160",
-    'localhost'
+    'localhost',
+    "b.yzcode.top"
 ]
 
 JUDGEMENT_URLS = 'http://124.222.95.233/'

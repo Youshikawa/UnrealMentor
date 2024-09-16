@@ -9,7 +9,7 @@ import json
 
 from django.views.decorators.csrf import csrf_exempt
 
-from .service import qoj_login, qoj_submit, qoj_result, qoj_problems, qoj_problem
+from .service import qoj_login, qoj_submit, qoj_result, qoj_problems, qoj_problem, get_std, set_std
 from django.conf import settings
 from .models import Submission
 # Create your views here.
@@ -105,3 +105,31 @@ def problem_details(request):
         'code':1,
         'data':data.get('data')
     })
+
+
+
+@csrf_exempt
+def std(request, problem_name):
+
+    if(request.method == "GET"):
+        # print(problem_name)
+
+        # problem_name = data.get("problem_name")
+        std = get_std(problem_name)
+        return JsonResponse({
+            'code': 1,
+            'data': std
+        })
+    else:
+        # problem_name = data.get("problme_name")
+        data = request.body
+        data = data.decode('utf-8')
+        # print(data)
+        data = json.loads(data)
+        std = data.get("std_data")
+        set_std(problem_name, std)
+
+        return JsonResponse({
+            'code': 1,
+            'data': None
+        })

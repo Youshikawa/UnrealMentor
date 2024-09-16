@@ -1,5 +1,6 @@
 import json
 import time
+from .models import Std
 
 import requests
 def qoj_login(
@@ -56,4 +57,20 @@ def qoj_problem(ojHost = "", headers = "", pid=1):
     url = ojHost + f'api/problem?problem_id={pid}'
     data = requests.get(url= url, headers=headers)
     return data.text
-    
+
+
+
+def get_std(problem_name):
+    std = Std.objects.filter(problem_name=problem_name)
+    print(problem_name)
+    if(std.count() == 0):
+        return ""
+    return std[0].std
+
+def set_std(problem_name, std_contest):
+    print(problem_name)
+    print("content")
+    std = Std(problem_name=problem_name, std=std_contest)
+    # 如果已经存在就更新
+    std.save()
+

@@ -10,3 +10,8 @@ class Submission(models.Model):
     submission_id = models.CharField(max_length=50)
     problem_name = models.CharField(max_length=50)
     problem_content = models.CharField(max_length=1000, default="No description!")
+
+
+class Std(models.Model):
+    problem_name = models.CharField(max_length = 50)
+    std = models.CharField(max_length = 10000)

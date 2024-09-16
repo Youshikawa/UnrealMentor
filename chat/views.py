@@ -57,11 +57,11 @@ def save_message(conversation_id, user, sender = "chatgpt", text = "") :
 @csrf_exempt
 def history_conversations(request):
     user = request.user
-    user = User.objects.filter(username='test01')[0]
-    # if not user.is_authenticated:
-    #     return JsonResponse({
-    #         'code':0,
-    #     })
+    # user = User.objects.filter(username='test01')[0]
+    if not user.is_authenticated:
+        return JsonResponse({
+            'code':0,
+        })
 
     conversations = user_conversation(user).order_by('-conversation_id')
     cnt = 0
@@ -103,7 +103,7 @@ def post_chat(request):
     data = json.loads(data)
     text = data.get('text')
     user = request.user
-    user = User.objects.filter(username="test01")[0]
+    # user = User.objects.filter(username="test01")[0]
     if not user.is_authenticated:
         return JsonResponse({
             'code': 0,

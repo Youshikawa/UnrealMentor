@@ -6,5 +6,6 @@ urlpatterns = [
     path('results/', views.submission_result, name = "submission_result"),
     path('problems/', views.problem_list, name = 'problem_list'),
     path('problem/',views.problem_details, name="problem_details"),
-    path('submission_list/',views.submission_list, name='submission_list')
+    path('submission_list/',views.submission_list, name='submission_list'),
+    path('std/<problem_name>',views.std, name="std")
 ]
